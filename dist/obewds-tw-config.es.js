@@ -1,5 +1,5 @@
 import { defineComponent, openBlock, createElementBlock, Fragment, createTextVNode, toDisplayString, renderSlot } from "vue";
-const _hoisted_1 = /* @__PURE__ */ createTextVNode("ViteVueTsCompoPkgStarter");
+const _hoisted_1 = /* @__PURE__ */ createTextVNode("ObewdsTwConfig");
 const _sfc_main = /* @__PURE__ */ defineComponent({
   props: {
     text: { default: "" }
@@ -16,4 +16,4 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-export { _sfc_main as ViteVueTsCompoPkgStarter };
+export { _sfc_main as ObewdsTwConfig };
