@@ -1,0 +1,88 @@
+{
+  "name": "@obewds/vite-vue-ts-compo-pkg-starter",
+  "description": "The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations",
+  "version": "0.1.0",
+  "author": "@oberocks",
+  "homepage": "https://github.com/obewds/vite-vue-ts-compo-pkg-starter#readme",
+  "license": "MIT",
+  "main": "./dist/vite-vue-ts-compo-pkg-starter.umd.js",
+  "module": "./dist/vite-vue-ts-compo-pkg-starter.es.js",
+  "browser": "./dist/vite-vue-ts-compo-pkg-starter.iife.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vite-vue-ts-compo-pkg-starter.es.js",
+      "require": "./dist/vite-vue-ts-compo-pkg-starter.umd.js"
+    },
+    "./src": "./src/components/ViteVueTsCompoPkgStarter.vue"
+  },
+  "files": [
+    "dist",
+    "src/components",
+    "tests"
+  ],
+  "types": "./dist/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "tsbuild": "npx rimraf dist && vite build && vue-tsc --emitDeclarationOnly && mv dist/src dist/types",
+    "preview": "vite preview",
+    "test": "vitest --dom",
+    "coverage": "vitest run --dom --coverage",
+    "docs:dev": "vitepress dev docs --port 8080",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs --port 8080",
+    "pkg:tsbundle": "npm run tsbuild && npm run docs:build && node scripts/cleanup.js",
+    "pkg:org": "npm config set scope obewds",
+    "pkg:login": "npm adduser",
+    "pkg:publish": "npm publish --access public",
+    "publish:prep": "npx rimraf dist && npm run pkg:tsbundle",
+    "publish:package": "npm run publish:prep && npm run pkg:org && npm run pkg:login && npm run pkg:publish",
+    "init:as": "node scripts/init.js"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.33"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.2",
+    "@types/node": "^17.0.30",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "@vue/test-utils": "^2.0.0-rc.20",
+    "autoprefixer": "^10.4.5",
+    "c8": "^7.11.0",
+    "fs-extra": "^10.1.0",
+    "happy-dom": "^3.1.0",
+    "postcss": "^8.4.12",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.6",
+    "vitepress": "^0.22.3",
+    "vitest": "^0.10.0",
+    "vue": "^3.2.33",
+    "vue-tsc": "^0.34.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obewds/vite-vue-ts-compo-pkg-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/obewds/vite-vue-ts-compo-pkg-starter/issues"
+  },
+  "keywords": [
+    "vue",
+    "vite",
+    "OBE:WDS",
+    "tailwindcss",
+    "rollup",
+    "vitepress",
+    "postcss",
+    "vue3",
+    "Vue.js",
+    "Tailwind CSS"
+  ]
+}
