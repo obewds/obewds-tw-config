@@ -26,9 +26,9 @@ export default defineConfig({
     outDir: './dist',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'ViteVueTsCompoPkgStarter',
+      name: 'ObewdsTwConfig',
       formats: ['es','cjs','umd','iife'],
-      fileName: (format: string) => `vite-vue-ts-compo-pkg-starter.${format}.js`,
+      fileName: (format: string) => `obewds-tw-config.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled into your library

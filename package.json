@@ -1,19 +1,19 @@
 {
-  "name": "@obewds/vite-vue-ts-compo-pkg-starter",
+  "name": "@obewds/obewds-tw-config",
   "description": "The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations",
   "version": "0.1.0",
   "author": "@oberocks",
-  "homepage": "https://github.com/obewds/vite-vue-ts-compo-pkg-starter#readme",
+  "homepage": "https://github.com/obewds/obewds-tw-config#readme",
   "license": "MIT",
-  "main": "./dist/vite-vue-ts-compo-pkg-starter.umd.js",
-  "module": "./dist/vite-vue-ts-compo-pkg-starter.es.js",
-  "browser": "./dist/vite-vue-ts-compo-pkg-starter.iife.js",
+  "main": "./dist/obewds-tw-config.umd.js",
+  "module": "./dist/obewds-tw-config.es.js",
+  "browser": "./dist/obewds-tw-config.iife.js",
   "exports": {
     ".": {
-      "import": "./dist/vite-vue-ts-compo-pkg-starter.es.js",
-      "require": "./dist/vite-vue-ts-compo-pkg-starter.umd.js"
+      "import": "./dist/obewds-tw-config.es.js",
+      "require": "./dist/obewds-tw-config.umd.js"
     },
-    "./src": "./src/components/ViteVueTsCompoPkgStarter.vue"
+    "./src": "./src/components/ObewdsTwConfig.vue"
   },
   "files": [
     "dist",
@@ -68,10 +68,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/obewds/vite-vue-ts-compo-pkg-starter.git"
+    "url": "git+https://github.com/obewds/obewds-tw-config.git"
   },
   "bugs": {
-    "url": "https://github.com/obewds/vite-vue-ts-compo-pkg-starter/issues"
+    "url": "https://github.com/obewds/obewds-tw-config/issues"
   },
   "keywords": [
     "vue",

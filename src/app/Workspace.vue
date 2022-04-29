@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 
-    import ViteVueTsCompoPkgStarter from '@/components/ViteVueTsCompoPkgStarter.vue'
+    import ObewdsTwConfig from '@/components/ObewdsTwConfig.vue'
 
 </script>
 
@@ -16,7 +16,7 @@
     
     <div class="bg-white text-center border-t-2 border-b-2 border-green-500 border-dashed py-24">
 
-        <ViteVueTsCompoPkgStarter/>
+        <ObewdsTwConfig/>
 
     </div>
 

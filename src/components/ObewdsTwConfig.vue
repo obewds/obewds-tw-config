@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-    type ViteVueTsCompoPkgStarterProps = {
+    type ObewdsTwConfigProps = {
         text?: string | undefined
     }
 
     const props = withDefaults(
-        defineProps<ViteVueTsCompoPkgStarterProps>(), {
+        defineProps<ObewdsTwConfigProps>(), {
             text: ''
         }
     )
@@ -20,7 +20,7 @@
             {{ text }}
         </template>
         <template v-else>
-            <slot>ViteVueTsCompoPkgStarter</slot>
+            <slot>ObewdsTwConfig</slot>
         </template>
     </div>
 
