@@ -6,23 +6,9 @@ head:
 ---
 
 
-::: danger
-This is an example GitHub Pages site and is NOT intended for actual use in real projects/products!
-:::
-
-
 
 
 # @obewds/obewds-tw-config Component
-
-
-
-
-## Vue Component Code
-
-Pure Vue.js version
-
-<<< @/../src/components/ObewdsTwConfig.vue
 
 
 

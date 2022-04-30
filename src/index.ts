@@ -1,1 +1,1 @@
-export { default as ObewdsTwConfig } from './components/ObewdsTwConfig.vue'
+export { default as ObewdsTwConfig } from './data/obewds-tw-config'

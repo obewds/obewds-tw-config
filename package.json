@@ -12,12 +12,10 @@
     ".": {
       "import": "./dist/obewds-tw-config.es.js",
       "require": "./dist/obewds-tw-config.umd.js"
-    },
-    "./src": "./src/components/ObewdsTwConfig.vue"
+    }
   },
   "files": [
     "dist",
-    "src/components",
     "tests"
   ],
   "types": "./dist/types/index.d.ts",
