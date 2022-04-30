@@ -164,6 +164,48 @@ In most cases, an end application will heavily modify or even fully replace (and
 
 
 
+### Changing Default Colors
+
+For many apps, the standard palette color keys/names of `default`, `primary`, `secondary`, `error`, and `success` are good starting points. Editing these defaults are as simple as assigning a new value to an object property!
+
+To demonstrate, let's take import the package and assign it to a variable like so:
+
+```javascript
+import ObewdsTwConfig from '@obewds/obewds-tw-config'
+
+let myTwConfig = ObewdsTwConfig
+```
+
+Next up, we can now use our `myTwConfig` variable to access and update each of the default text palette colors like so:
+
+```javascript
+myTwConfig.text.palettes.default.colors = {
+    "default": 'text-black dark:text-white',
+    primary: 'text-amber-500 dark:text-amber-200',
+    secondary: 'text-indigo-500 dark:text-indigo-200',
+    error: 'text-rose-500 dark:text-rose-200',
+    success: 'text-emerald-500 dark:text-emerald-200'
+}
+```
+
+And of course, we'll still need to `provide()` our data to our app, so we can now do this using our extended defaults like so:
+
+```javascript
+app.provide('tw', myTwConfig)
+```
+
+Which means in any app component, we can now access our new default palette primary text color like this:
+
+```html
+<template>
+    <div :class="tw.text.palettes.default.colors.primary">
+        I have the primary default text palatte color classes!
+    </div>
+</template>
+```
+
+
+
 ### Adding A New Palette Color
 
 In most cases, an app will customize most if not all of the base/config starting data from this package. So let's look at how that would work IRL.
@@ -215,24 +257,22 @@ So the approach of this solution to that problem is ultimately meant to make thi
 
 Adding a new Palette (of colors, so adding a new palette and colors to be exact), is similar to extending a default palette, but with a little more complexity.
 
-So let's add a new palette to our **bg** defaults! To start, we'll want to define our palette as an object, so it's easy to add to our default config data.
+So let's add a new palette to our **bg** defaults! To start, can simply define our new palette directly on a variable instance of the package payload like this:
 
 ```javascript
-const myPaletteObj = {
+import ObewdsTwConfig from '@obewds/obewds-tw-config'
+
+let myTwConfig = ObewdsTwConfig
+
+myTwConfig.bg.palettes.fromDuskTillDawn = {
     // all palette objects require an explicit
     // object "color" property to hold
-    // color key/value pairs!
+    // color key/value (string/string) pairs!
     color: {
         dusk: 'bg-blue-700 dark:bg-blue-400',
         dawn: 'bg-cyan-600 dark:bg-blue-300'
     }
 }
-```
-
-Now that we have our new `myPaletteObj` with our new `dusk` and `dawn` color classes values, we can add our new palette to our default config object (which we're going to call `duskAndDawn`) like so:
-
-```javascript
-myTwConfig.bg.palettes.duskAndDawn = myPaletteObj
 ```
 
 And of course, we'll still need to `provide()` our data to our app, so we can now do this using our extended defaults like so:
@@ -245,11 +285,11 @@ And if our newly extended data was used in an app component, we could access the
 
 ```html
 <template>
-    <div :class="tw.bg.palettes.duskAndDawn.colors.dusk">
-        <slot name="dusk"/>
+    <div :class="tw.bg.palettes.fromDuskTillDawn.colors.dusk">
+        I'll have dusk bg CSS classes!
     </div>
-    <div :class="tw.bg.palettes.duskAndDawn.colors.dawn">
-        <slot name="dawn"/>
+    <div :class="tw.bg.palettes.fromDuskTillDawn.colors.dawn">
+        I'll have dawn bg CSS classes!
     </div>
 </template>
 ```
