@@ -6,14 +6,9 @@ head:
 ---
 
 
-::: danger
-This is an example GitHub Pages site and is NOT intended for actual use in real projects/products!
-:::
 
 
-
-
-# @obewds/vite-vue-ts-compo-pkg-starter Tests
+# @obewds/obewds-tw-config Tests
 
 
 
@@ -28,4 +23,4 @@ This is an example GitHub Pages site and is NOT intended for actual use in real 
 
 ## Vitest Tests
 
-<<< @/../tests/ViteVueTsCompoPkgStarter.test.js
+<<< @/../tests/ObewdsTwConfig.test.js

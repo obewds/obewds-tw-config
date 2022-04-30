@@ -7,5 +7,6 @@ const helpers = require('./helpers.js')
 fs.remove('./dist/types/main.d.ts')
 fs.remove('./dist/types/App.vue.d.ts')
 fs.remove('./dist/types/app')
+fs.remove('./dist/types/components')
 
 helpers.nodeScriptSuccessMsg('Package ./dist files were cleaned/prepped for publishing!')

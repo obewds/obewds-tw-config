@@ -6,23 +6,9 @@ head:
 ---
 
 
-::: danger
-This is an example GitHub Pages site and is NOT intended for actual use in real projects/products!
-:::
 
 
-
-
-# @obewds/vite-vue-ts-compo-pkg-starter Component
-
-
-
-
-## Vue Component Code
-
-Pure Vue.js version
-
-<<< @/../src/components/ViteVueTsCompoPkgStarter.vue
+# @obewds/obewds-tw-config Component
 
 
 
@@ -31,7 +17,7 @@ Pure Vue.js version
 
 ESM version
 
-<<< @/../dist/vite-vue-ts-compo-pkg-starter.es.js
+<<< @/../dist/obewds-tw-config.es.js
 
 
 
@@ -40,7 +26,7 @@ ESM version
 
 Version used by Node.js (Universal version for Common.js/AMD)
 
-<<< @/../dist/vite-vue-ts-compo-pkg-starter.umd.js
+<<< @/../dist/obewds-tw-config.umd.js
 
 
 
@@ -49,7 +35,7 @@ Version used by Node.js (Universal version for Common.js/AMD)
 
 CommonJS version
 
-<<< @/../dist/vite-vue-ts-compo-pkg-starter.cjs.js
+<<< @/../dist/obewds-tw-config.cjs.js
 
 
 
@@ -58,5 +44,5 @@ CommonJS version
 
 Version used for browser instances
 
-<<< @/../dist/vite-vue-ts-compo-pkg-starter.iife.js
+<<< @/../dist/obewds-tw-config.iife.js
 
