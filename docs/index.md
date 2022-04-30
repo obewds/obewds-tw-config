@@ -168,7 +168,7 @@ In most cases, an end application will heavily modify or even fully replace (and
 
 For many apps, the standard palette color keys/names of `default`, `primary`, `secondary`, `error`, and `success` are good starting points. Editing these defaults are as simple as assigning a new value to an object property!
 
-To demonstrate, let's take import the package and assign it to a variable like so:
+To demonstrate, let's import the package and assign it to a variable like so:
 
 ```javascript
 import ObewdsTwConfig from '@obewds/obewds-tw-config'
