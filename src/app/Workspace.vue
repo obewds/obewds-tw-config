@@ -26,6 +26,14 @@
 
     testConfig.bg.palettes.default.colors.success = 'typescript-can be-cool'
 
+    testConfig.text.palettes.default.colors = {
+        "default": 'text-black dark:text-white',
+        primary: 'text-amber-500 dark:text-amber-200',
+        secondary: 'text-indigo-500 dark:text-indigo-200',
+        error: 'text-rose-500 dark:text-rose-200',
+        success: 'text-emerald-500 dark:text-emerald-200'
+    }
+
 </script>
 
 
@@ -55,6 +63,14 @@
         <strong class="block ">Modified Default Success Bg Color:</strong>
         
         <pre><code>{{ testConfig.bg.palettes.default.colors }}</code></pre>
+
+
+        <br><br>
+
+
+        <strong class="block ">Replacing all Default Text Color Values:</strong>
+        
+        <pre><code>{{ testConfig.text.palettes.default.colors }}</code></pre>
 
 
         <br><br>
