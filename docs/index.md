@@ -13,6 +13,44 @@ Welcome to the docs page for OBE:WDS's `ObewdsTwConfig` component for modular De
 
 
 
+## Preface
+
+This package is essentially a foundational layer for a two-part goal.
+
+::: info GOAL ONE
+The first goal is to reduce the average string length (cognative load) of using atomic CSS classes at scale in production web applications.
+
+The approach is simple: extract common patterns **in groups** of atomic CSS classes for brand-level (and particularly color and accessibility related) characteristics, and provide them **globally** to ensure maximum DRYness and maximum iterative control over those classes for:
+
+* Rapid prototyping
+* Incremental design refinements
+* Accessibility maintenance/refinements
+:::
+
+::: info GOAL TWO
+The second goal is to make this solution in a way that allows front end developers:
+
+* Fully type defined and type hinted components
+* A base structure that is ready to handle dynamic state changes as they pertain to end-user visual aesthetics
+* A base structure to use to keep brand-centric and aesthetically flexible details seperate from more functional and programmatic component structures
+* Flexible and easy to integrate components
+* Exhaustive documentation
+* Complete modularity
+* Tree shakable
+* ES Module and Node.js friendly
+* Fully tested with 100% coverage components
+* Ideally using next-gen tooling that's as fast as possible (thank you Vite.js!)
+:::
+
+However to accomplish those goals realistically, the design/marketing/branding side of things needs a straight forward (and human readable) way to "see" exactly how brand-level characteristics across an application "feel". They also need to be able to consistently tweak those characteristics to refine designs into both beautiful and accessable solutions... without being all up in the front enders business all the time!
+
+That's where this package kicks in! It's a foundational piece of simple code meant to provide both sides of the design and development coin the space and interoperability needed to be their best and deliver consistently strong work together!
+
+What's cool is ultimately this is all achievable through identifying patterns and a judicious obsession for a DRY front end code base, along with a healthy obsession for a design system that works out-of-the-box for rapid prototyping as well as being fully deconstructable/extendable for the needs and standards of modern production web apps.
+
+
+
+
 ## Installation
 
 ```bash
@@ -119,7 +157,7 @@ So if you're using Tailwind CSS and OBE:WDS together, you will **always** want t
 
 
 
-## Customizing
+## Customization Examples
 
 In most cases, an end application will heavily modify or even fully replace (and extend) this design system config file. In fact, that's exactly what this package is designed to facilitate!
 
@@ -148,7 +186,7 @@ To get started with extending the default data, we'll want to assign the default
 let myTwConfig = ObewdsTwConfig
 ```
 
-Now we can use our `myTwConfig` instance to get started with extending the defaults. Let's add a new background color name with a value containing some new Tailwind CSS background focused classes:
+Now we can use our `myTwConfig` variable to get started with extending the defaults. Let's add a new background color name with a value containing some new Tailwind CSS background focused classes:
 
 ```javascript
 myTwConfig.bg.palettes.default.colors.midnight = 'bg-indigo-600 dark:bg-indigo-300'
@@ -167,7 +205,7 @@ In the `midnight` color classes example above, notice the use of Tailwind CSS `d
 
 So it's worth mentioning now, that much of the inspiration for this workflow and approach comes from the PITA nature of not just dealing with long strings of atomic classes, but also adding to those long strings by adding 30-50% more of them for something like dark mode!
 
-So this approach in this package is ultimately meant to make that MUCH easier to manage and iterate through from initial prototyping workflows to final production workflows!
+So the approach of this solution to that problem is ultimately meant to make things easier to manage and iterate through the evolution of an app from initial prototyping workflows to final production workflows!
 :::
 
 
