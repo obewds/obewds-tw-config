@@ -1,11 +1,10 @@
 // ./tests/ObewdsTwConfig.test.js
 
-import { mount } from '@vue/test-utils'
-import ObewdsTwConfig from '../src/components/ObewdsTwConfig.vue'
+import ObewdsTwConfig from '@/data/obewds-tw-config'
 
 
 
-test('ObewdsTwConfig.vue component mounts successfully', async () => {
+test('ObewdsTwConfig component imports successfully', async () => {
 
     expect(ObewdsTwConfig).toBeTruthy()
 
@@ -13,32 +12,55 @@ test('ObewdsTwConfig.vue component mounts successfully', async () => {
 
 
 
-test('ObewdsTwConfig.vue component text prop accepts a string value', async () => {
+test('ObewdsTwConfig can be modified with a new bg palette color primary value', async () => {
 
-    const testString = 'Test String Value'
+    let config = ObewdsTwConfig
+    let testClass = 'test-class another-class'
+    
+    config.bg.palettes.default.colors.primary = testClass
 
-    const wrapper = mount(ObewdsTwConfig, {
-        props: {
-            text: testString
-        },
-    })
+    let result = JSON.stringify(config)
 
-    expect(wrapper.text()).toContain(testString)
+    expect(result).toContain(testClass)
+
+})
+
+
+
+test('ObewdsTwConfig can be extended with a new bg palette color', async () => {
+
+    let config = ObewdsTwConfig
+    let testKey = 'testKey'
+    let testClass = 'test-class'
+
+    config.bg.palettes.default.colors[testKey] = testClass
+
+    let result = JSON.stringify(config)
+
+    expect(result).toContain(testKey)
+    expect(result).toContain(testClass)
     
 })
 
 
 
-test('ObewdsTwConfig.vue component default slot accepts an element node with a child text node', async () => {
+test('ObewdsTwConfig can be extended with a new bg palette and color', async () => {
 
-    const testStrLiteral = `<div>Test String Value</div>`
+    let config = ObewdsTwConfig
+    let testPalette = 'test-palette'
+    let testKey = 'test-key'
+    let testClass = 'test-class another-class'
+    let palette = {
+        colors: {}
+    }
 
-    const wrapper = mount(ObewdsTwConfig, {
-        slots: {
-            default: testStrLiteral
-        },
-    })
+    palette.colors[testKey] = testClass
+    config.bg.palettes[testPalette] = palette
 
-    expect(wrapper.html()).toContain(testStrLiteral)
-    
+    let result = JSON.stringify(config)
+
+    expect(result).toContain(testPalette)
+    expect(result).toContain(testKey)
+    expect(result).toContain(testClass)
+
 })
