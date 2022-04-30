@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "@oberocks",
   "homepage": "https://github.com/obewds/obewds-tw-config#readme",
   "license": "MIT",
