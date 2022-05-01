@@ -77,10 +77,10 @@ First off, go ahead and install the package with:
 npm install @obewds/obewds-tw-config --save-dev
 ```
 
-Next up, you can run an install script to bring the module output data from this package into your project to edit and customize completely as a handy defaults config JSON file using `npx`:
+Next up, you can run an install script to bring the module output data from this package into your project to edit and customize completely as a handy defaults config JSON file using `npm explore`:
 
 ```bash
-npx @obewds/obewds-tw-config install:config
+npm explore @obewds/obewds-tw-config -- npm run install:config
 ```
 
 You should now have a file in your root directory (`./obewds.tw.config.json`) that you can use, reference, include in Tailwind CSS config arrays, and more!
