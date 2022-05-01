@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "@oberocks",
   "homepage": "https://github.com/obewds/obewds-tw-config#readme",
   "license": "MIT",
@@ -16,7 +16,8 @@
   },
   "files": [
     "dist",
-    "tests"
+    "tests",
+    "scripts/install.js"
   ],
   "types": "./dist/types/index.d.ts",
   "sideEffects": false,
@@ -36,7 +37,8 @@
     "pkg:publish": "npm publish --access public",
     "publish:prep": "npx rimraf dist && npm run pkg:tsbundle",
     "publish:package": "npm run publish:prep && npm run pkg:org && npm run pkg:login && npm run pkg:publish",
-    "init:as": "node scripts/init.js"
+    "init:as": "node scripts/init.js",
+    "install:config": "node scripts/install.js"
   },
   "peerDependencies": {
     "vue": "^3.2.33"

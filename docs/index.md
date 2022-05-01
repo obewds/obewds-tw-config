@@ -67,38 +67,41 @@ It's a foundational piece of simple code meant to provide both sides of the desi
 
 
 
-## Installation
+
+
+## Config File Installation
+
+First off, go ahead and install the package with:
 
 ```bash
 npm install @obewds/obewds-tw-config --save-dev
 ```
 
+Next up, you can run an install script to bring the module output data from this package into your project to edit and customize completely as a handy defaults config JSON file using `npx`:
 
-
-
-## Importing
-
-```javascript
-import { ObewdsTwConfig } from '@obewds/obewds-tw-config'
+```bash
+npx @obewds/obewds-tw-config install:config
 ```
 
+You should now have a file in your root directory (`./obewds.tw.config.json`) that you can use, reference, include in Tailwind CSS config arrays, and more!
 
 
 
 
 
-## Tailwind Config Integration
 
-To use the defaults out of the box with a Tailwind CSS project, you'll need to import the defaults and add them to Tailwinds config file's exported `content` array like so:
+## Including Config in Tailwind
+
+To actually use your new `./obewds.tw.config.json` file, Tailwind CSS needs to be made aware of the file and it's CSS classes, so they end up included in JIT/build output files. Adding your new defaults config file is a one-liner in Tailwind's `content` inclusion array:
 
 ```javascript
-const ObewdsTwConfig = require('@obewds/obewds-tw-config')
+// ./tailwind.config.js
 
 module.exports = {
     // ...
     content: [
         // ...
-        ObewdsTwConfig,
+        "./obewds.tw.config.json",
     ],
     // ...
 }
@@ -107,32 +110,61 @@ module.exports = {
 
 
 
+## Importing into Apps
+
+In modern ES Module contexts, the new `./obewds.tw.config.json` defaults file will be automatically converted into a usable JavaScript object when imported. So to use the new file programatically, we simply need:
+
+```javascript
+// assuming we're including into a file that's also in the root directory
+import tw from './obewds.tw.config.json'
+```
+
+Conversely, the same can be accomplished for Node.js contexts, by switching to the require() syntax:
+
+```javascript
+// assuming we're including into a file that's also in the root directory
+let tw = require('./obewds.tw.config.json')
+```
+
+
+::: tip IMPORT BEST PRACTICES
+* Call your import whatever you want
+* But 'tw' is the internal/common convention!
+* And 'tw' is used/advised for components like Vue.js's `provide()`/`inject()`, too!
+:::
+
+
+
+
+
+
+
 ## A Vue.js Use Example
 
-Let's take a look at modifying this config file in a Vue.js app context for sake of brevity.
+Let's take a look at using the `./obewds.tw.config.json` defaults file in a Vue.js app context.
 
-To start out, let's consider a typical Vue app initialization file containing something along the lines of:
+To start out, let's consider a default Vue + Tailwind + Vite app initialization file containing something along the lines of:
 
 ```javascript
 import { createApp } from 'vue' // the vue framework
 import App from './App.vue' // a primary view/page component
-import './index.css' // a Tailwind CSS base file (with @tailwind base etc.)
+import './assets/index.css' // a Tailwind CSS base file (with @tailwind base etc.)
 
 const app = createApp(App) // creating the app instance
 
 app.mount('#app') // mounting the app to the DOM
 ```
 
-With that code in mind, we can add in our `ObewdsTwConfig` module into the mix by first importing the base config data from the package.
+With that code in mind, we can add in our `ObewdsTwConfig` defaults into the mix by first importing them:
 
 ```javascript
-import ObewdsTwConfig from '@obewds/obewds-tw-config'
+import tw from '../obewds.tw.config.json'
 ```
 
 Next up and in the contexts of a Vue.js app, we could elect to make the base config data from this package available globally for use in any app component, by providing a line of code to `provide()` our data to components:
 
 ```javascript
-app.provide('tw', obewdsTwConfig)
+app.provide('tw', tw)
 ```
 
 Putting everything together, our Vue app's initialization files now looks something like this:
@@ -140,13 +172,13 @@ Putting everything together, our Vue app's initialization files now looks someth
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
-import './index.css'
+import './assets/index.css'
 
-import ObewdsTwConfig from '@obewds/obewds-tw-config' // WooHoo!
+import tw from '../obewds.tw.config.json' // WooHoo!
 
 const app = createApp(App)
 
-app.provide('tw', obewdsTwConfig) // Provide 'tw' keyed data
+app.provide('tw', tw) // WooHoo!
 
 app.mount('#app')
 ```
@@ -155,27 +187,34 @@ And this of course means we can use our provided data in a Vue component, like t
 
 ```html
 <template>
-    <div class="tw.bg.palettes.default.color.primary">
+    <div :class="primaryBg">
         <slot/>
     </div>
 </template>
 <script setup lang="ts">
     const tw = inject('tw')
+    const primaryBg = tw.bg.palettes.default.color.primary
 </script>
 ```
 
 ::: danger ABOUT THE 'tw' KEY
-Currently all OBE:WDS + Tailwind CSS focused components and design systems will use and expect the specific **provided** key of `'tw'` within components and design system component sets.
+Currently all OBE:WDS + Tailwind CSS focused Vue.js components and design systems will use and expect the specific **provided** key of `'tw'` within components and design system component sets.
 
-So if you're using Tailwind CSS and OBE:WDS together, you will **always** want to use the `'tw'` key on **both** the Vue `provide()` and `inject()` sides of things!
+So if you're using Tailwind CSS and OBE:WDS together with Vue.js, you will **almost always** want to use the `'tw'` key on **both** the Vue `provide()` and `inject()` sides of things to override default classes used by OBE:WDS components for rapid prototyping, and instaed use your app and brand specific classes that you define uniquely to your app!
 :::
 
 
 
 
-## Customization Examples
+## Programmatic Customization
 
-In most cases, an end application will heavily modify or even fully replace (and extend) this design system config file. In fact, that's exactly what this package is designed to facilitate!
+In some cases, an end application will heavily modify or even fully replace (and extend) this design system config file. This is ultimately trivial, because we're really just dealing with objects of keys/values. However the structure is defined for use with components with built-in design system centric features, so thankfully TypeScript is available to help guide programmatic customization.
+
+::: info TYPESCRIPT IS THE RIGHT SCRIPT
+It's worth noting that this package has first class support for TypeScript being that it's written in... TypeScript, so your IDE can be extremely helpful when customizing your OBE:WDS + Tailwind CSS design system config data!
+:::
+
+Let's look at some simple examples just to illustrate the flexibility and intent of use.
 
 
 
@@ -187,15 +226,16 @@ For many apps, the standard palette color keys/names of `default`, `primary`, `s
 To demonstrate, let's import the package and assign it to a variable like so:
 
 ```javascript
-import ObewdsTwConfig from '@obewds/obewds-tw-config'
+// Example in a Vite/Vue app context
+import twDefaults from '../obewds.tw.config.json'
 
-let myTwConfig = ObewdsTwConfig
+let tw = twDefaults
 ```
 
 Next up, we can now use our `myTwConfig` variable to access and update each of the default text palette colors like so:
 
 ```javascript
-myTwConfig.text.palettes.default.colors = {
+tw.text.palettes.default.colors = {
     "default": 'text-black dark:text-white',
     primary: 'text-amber-500 dark:text-amber-200',
     secondary: 'text-indigo-500 dark:text-indigo-200',
@@ -207,17 +247,21 @@ myTwConfig.text.palettes.default.colors = {
 And of course, we'll still need to `provide()` our data to our app, so we can now do this using our extended defaults like so:
 
 ```javascript
-app.provide('tw', myTwConfig)
+app.provide('tw', tw)
 ```
 
 Which means in any app component, we can now access our new default palette primary text color like this:
 
 ```html
 <template>
-    <div :class="tw.text.palettes.default.colors.primary">
+    <div :class="primaryText">
         I have the primary default text palatte color classes!
     </div>
 </template>
+<script setup lang="ts">
+    const tw = inject('tw')
+    const primaryText = tw.text.palettes.default.colors.primary
+</script>
 ```
 
 
@@ -226,14 +270,11 @@ Which means in any app component, we can now access our new default palette prim
 
 In most cases, an app will customize most if not all of the base/config starting data from this package. So let's look at how that would work IRL.
 
-::: info TYPESCRIPT IS THE RIGHT SCRIPT
-It's worth noting that this package has first class support for TypeScript being that it's written in... TypeScript, so your IDE can be extremely helpful when customizing your OBE:WDS + Tailwind CSS design system config data!
-:::
-
 For example, let's consider our tiny Vue.js app example above, let's start out by again importing the default data from this package:
 
 ```javascript
-import ObewdsTwConfig from '@obewds/obewds-tw-config'
+// Example in a Vite/Vue app context
+import twDefaults from '../obewds.tw.config.json'
 ```
 
 But this time, instead of providing the defaults directly to the app, let's extend the defaults a bit!
@@ -241,20 +282,19 @@ But this time, instead of providing the defaults directly to the app, let's exte
 To get started with extending the default data, we'll want to assign the default data to a variable like so:
 
 ```javascript
-let myTwConfig = ObewdsTwConfig
+let tw = twDefaults
 ```
 
 Now we can use our `myTwConfig` variable to get started with extending the defaults. Let's add a new background color name with a value containing some new Tailwind CSS background focused classes:
 
 ```javascript
-myTwConfig.bg.palettes.default.colors
-    .midnight = 'bg-indigo-600 dark:bg-indigo-300'
+tw.bg.palettes.default.colors.midnight = 'bg-indigo-600 dark:bg-indigo-300'
 ```
 
 And of course, we'll still need to `provide()` our data to our app, so we can now do this using our extended defaults like so:
 
 ```javascript
-app.provide('tw', myTwConfig)
+app.provide('tw', tw)
 ```
 
 And now we can use our new `midnight` color classes (DRYly :partying_face:) anywhere in our imaginary Vue.js example app!
@@ -277,11 +317,12 @@ Adding a new Palette (of colors, so adding a new palette and colors to be exact)
 So let's add a new palette to our **bg** defaults! To start, can simply define our new palette directly on a variable instance of the package payload like this:
 
 ```javascript
-import ObewdsTwConfig from '@obewds/obewds-tw-config'
+// Example in a Vite/Vue app context
+import twDefaults from '../obewds.tw.config.json'
 
-let myTwConfig = ObewdsTwConfig
+let tw = twDefaults
 
-myTwConfig.bg.palettes.fromDuskTillDawn = {
+tw.bg.palettes.fromDuskTillDawn = {
     // all palette objects require an explicit
     // object "color" property to hold
     // color key/value (string/string) pairs!
@@ -295,20 +336,27 @@ myTwConfig.bg.palettes.fromDuskTillDawn = {
 And of course, we'll still need to `provide()` our data to our app, so we can now do this using our extended defaults like so:
 
 ```javascript
-app.provide('tw', myTwConfig)
+app.provide('tw', tw)
 ```
 
 And if our newly extended data was used in an app component, we could access these new Tailwind CSS classes strings anywhere in our code like this:
 
 ```html
 <template>
-    <div :class="tw.bg.palettes.fromDuskTillDawn.colors.dusk">
+    <div :class="text.dusk">
         I'll have dusk bg CSS classes!
     </div>
-    <div :class="tw.bg.palettes.fromDuskTillDawn.colors.dawn">
+    <div :class="text.dawn">
         I'll have dawn bg CSS classes!
     </div>
 </template>
+<script setup lang="ts">
+    const tw = inject('tw')
+    const text = {
+        dusk: tw.bg.palettes.fromDuskTillDawn.colors.dusk,
+        dawn: tw.bg.palettes.fromDuskTillDawn.colors.dawn,
+    }
+</script>
 ```
 
 
