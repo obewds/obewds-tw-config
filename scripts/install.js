@@ -1,9 +1,9 @@
 // ./scripts/install.js
 
 const fs = require('fs-extra')
-const ObewdsTwConfig = require('../dist/obewds-tw-config.cjs')
+const ObewdsTwConfig = require('../dist/obewds-tw-config.cjs.js')
 
-//const outputFileDev = "./obewds.tw.config.json"
+//const outputFileDev = "../obewds.tw.config.json"
 const outputFile = "../../../obewds.tw.config.json"
 
 const outputJson = JSON.stringify(ObewdsTwConfig.ObewdsTwConfig, null, 4)
@@ -12,7 +12,7 @@ fs.outputFile(outputFile, outputJson, err => {
 
     if (err) {
 
-        console.log(err) // => null
+        console.log(err)
 
     } else {
 

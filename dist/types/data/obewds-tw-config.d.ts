@@ -18,6 +18,9 @@ interface ObewdsDefaultPalettesInterface {
     };
 }
 interface ObewdsTwConfigInterface {
+    anchor: {
+        [key: string]: string | object;
+    };
     bg: {
         palettes: ObewdsDefaultPalettesInterface;
         [key: string]: string | object;
