@@ -18,35 +18,51 @@ Welcome to the docs page for OBE:WDS's `ObewdsTwConfig` component for modular De
 This package is essentially a foundational layer for a two-part goal.
 
 ::: info GOAL ONE
-The first goal is to reduce the average string length (cognative load) of using atomic CSS classes at scale in production web applications.
+The first goal is to reduce the average string length (and cognative load) of using atomic CSS classes at scale in production web applications.
 
-The approach is simple: extract common patterns **in groups** of atomic CSS classes for brand-level (and particularly color and accessibility related) characteristics, and provide them **globally** to ensure maximum DRYness and maximum iterative control over those classes for:
+The solution is simple: extract common patterns **in groups of atomic CSS classes** and provide them globally. The craft lies in which characterists to abstract. For example, extracting the following makes sense:
+
+* Globally consistent brand, color, typographic and accessibility characteristics
+* Repeated layout or structural CSS class groups
+* Globally consistent edge of screen paddings or margins
+* Repeated flexbox and CSS grid gutter spacing classes
+* Any repeated strings that just show up as we build awesome things and iterate to great solutions!
+:::
+
+Besides, who doesn't want DRYness coupled with intuitive iterative control over our sets of atomic classes? That really comes in handy whenever:
 
 * Rapid prototyping
+* Performing production app maintenance 
+* Doing rush "formatting" patches (we've all been there)
 * Incremental design refinements
-* Accessibility maintenance/refinements
-:::
+* On-going accessibility maintenance/improvements
+
+Now let's talk about the hero level role that the FEDs play in the evolution of our awesome web apps in the second goal of this approach!
 
 ::: info GOAL TWO
 The second goal is to make this solution in a way that allows front end developers:
 
-* Fully type defined and type hinted components
+* Fully type defined and type hinted components (yay TypeScript!)
 * A base structure that is ready to handle dynamic state changes as they pertain to end-user visual aesthetics
 * A base structure to use to keep brand-centric and aesthetically flexible details seperate from more functional and programmatic component structures
 * Flexible and easy to integrate components
-* Exhaustive documentation
-* Complete modularity
-* Tree shakable
+* Exhaustive documentation (yay VitePress!)
+* Deconstructable and recomposable modularity
+* Tree shaking friendly (yay Rollup.js!)
 * ES Module and Node.js friendly
-* Fully tested with 100% coverage components
-* Ideally using next-gen tooling that's as fast as possible (thank you Vite.js!)
+* Fully tested with 100% coverage components (yay Vitest!)
+* Ideally using next-gen tooling that's as fast as possible (yay Vite.js!)
 :::
 
-However to accomplish those goals realistically, the design/marketing/branding side of things needs a straight forward (and human readable) way to "see" exactly how brand-level characteristics across an application "feel". They also need to be able to consistently tweak those characteristics to refine designs into both beautiful and accessable solutions... without being all up in the front enders business all the time!
+However to accomplish those goals realistically in the wild, the design/marketing/branding side of things are going need a straight forward (and human readable) way to "see" exactly how brand-level characteristics across an application "feel". 
 
-That's where this package kicks in! It's a foundational piece of simple code meant to provide both sides of the design and development coin the space and interoperability needed to be their best and deliver consistently strong work together!
+They are also going to need to be able to consistently tweak those characteristics to refine designs into both beautiful and accessable solutions... without being all up in the front enders business all of the time.
 
-What's cool is ultimately this is all achievable through identifying patterns and a judicious obsession for a DRY front end code base, along with a healthy obsession for a design system that works out-of-the-box for rapid prototyping as well as being fully deconstructable/extendable for the needs and standards of modern production web apps.
+That's where this package kicks in!
+
+It's a foundational piece of simple code meant to provide both sides of the design and development coin the structure, space and interoperability needed to be their best and deliver consistently strong work together!
+
+> What's cool is ultimately these goals are achievable by identifying patterns and a judicious obsession for a DRY front end code base, along with a healthy obsession for a design system that works out-of-the-box for rapid prototyping, but has a fully focused production web app mindset!
 
 
 
@@ -206,7 +222,7 @@ Which means in any app component, we can now access our new default palette prim
 
 
 
-### Adding A New Palette Color
+### Adding A Default Palette Color
 
 In most cases, an app will customize most if not all of the base/config starting data from this package. So let's look at how that would work IRL.
 
@@ -231,7 +247,8 @@ let myTwConfig = ObewdsTwConfig
 Now we can use our `myTwConfig` variable to get started with extending the defaults. Let's add a new background color name with a value containing some new Tailwind CSS background focused classes:
 
 ```javascript
-myTwConfig.bg.palettes.default.colors.midnight = 'bg-indigo-600 dark:bg-indigo-300'
+myTwConfig.bg.palettes.default.colors
+    .midnight = 'bg-indigo-600 dark:bg-indigo-300'
 ```
 
 And of course, we'll still need to `provide()` our data to our app, so we can now do this using our extended defaults like so:
@@ -245,7 +262,7 @@ And now we can use our new `midnight` color classes (DRYly :partying_face:) anyw
 ::: tip DESIGN SYSTEM INTENT
 In the `midnight` color classes example above, notice the use of Tailwind CSS `dark:` prefixed classes. If you don't know already, that's the "class" method of using dark mode in Tailwind CSS.
 
-So it's worth mentioning now, that much of the inspiration for this workflow and approach comes from the PITA nature of not just dealing with long strings of atomic classes, but also adding to those long strings by adding 30-50% more of them for something like dark mode!
+So it's worth mentioning now, that much of the inspiration for this workflow and approach comes from the PITA nature of not just dealing with long strings of atomic classes, but also the 30-50% more of them needed for something awesome like dark mode!
 
 So the approach of this solution to that problem is ultimately meant to make things easier to manage and iterate through the evolution of an app from initial prototyping workflows to final production workflows!
 :::
