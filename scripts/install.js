@@ -1,7 +1,6 @@
 // ./scripts/install.js
 
 const fs = require('fs-extra')
-const helpers = require('./helpers.js')
 const ObewdsTwConfig = require('../dist/obewds-tw-config.cjs')
 
 //const outputFileDev = "./obewds.tw.config.json"
@@ -17,8 +16,10 @@ fs.outputFile(outputFile, outputJson, err => {
 
     } else {
 
-        helpers.nodeScriptSuccessMsg('Installed ./obewds.tw.config.json file. Happy coding! :)')
-        
+        console.log(' ')
+        console.log('*\\o/* ' + 'Installed ./obewds.tw.config.json file. Happy coding!' + ' *\\o/*')
+        console.log(' ')
+
     }
     
 })
