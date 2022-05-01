@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "author": "@oberocks",
   "homepage": "https://github.com/obewds/obewds-tw-config#readme",
   "license": "MIT",
@@ -88,6 +88,12 @@
     "Tailwind CSS"
   ],
   "dependencies": {
+    "@obewds/tw-bg-palette-console": "^0.1.12",
+    "@obewds/tw-bg-palette-default": "^0.1.10",
+    "@obewds/tw-bg-palette-monochromatic": "^0.1.2",
+    "@obewds/tw-bg-palette-pastel": "^0.1.9",
+    "@obewds/tw-border-palette-default": "^0.1.1",
+    "@obewds/tw-text-palette-default": "^0.1.0",
     "lodash.merge": "^4.6.2"
   }
 }
