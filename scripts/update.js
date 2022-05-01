@@ -3,7 +3,6 @@
 const fs = require('fs-extra')
 const merge = require('lodash.merge');
 const ObewdsTwConfig = require('../dist/obewds-tw-config.cjs.js')
-//const clientConfigPath = './obewds.tw.config.json' // dev version
 const clientConfigPath = '../../../obewds.tw.config.json'
 const defaultConfig = ObewdsTwConfig.ObewdsTwConfig
 
@@ -11,7 +10,7 @@ try {
 
     if (fs.existsSync(clientConfigPath)) {
 
-        const clientConfig = require('.' + clientConfigPath)
+        const clientConfig = require('../../../../obewds.tw.config.json')
 
         const mergedConfig = merge(defaultConfig, clientConfig)
 
