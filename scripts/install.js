@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 const ObewdsTwConfig = require('../dist/obewds-tw-config.cjs')
 
 //const outputFileDev = "./obewds.tw.config.json"
-const outputFile = "../../../../obewds.tw.config.json"
+const outputFile = "../../../obewds.tw.config.json"
 
 const outputJson = JSON.stringify(ObewdsTwConfig.ObewdsTwConfig, null, 4)
 
