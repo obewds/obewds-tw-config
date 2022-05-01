@@ -362,6 +362,31 @@ And if our newly extended data was used in an app component, we could access the
 
 
 
+## Updating Config Versions
+
+You can also use this package to update an existing project `./obewds.tw.config.json` defaults file to bring in any new additions for new components in a OBE:WDS component system. It's really similar to installing a config file.
+
+First off, go ahead and uninstall your existing version of this package and reinstall the package to the newest version:
+
+```bash
+npm uninstall @obewds/obewds-tw-config && npm install @obewds/obewds-tw-config --save-dev
+```
+
+Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found will merge it with the new defaults from this package. Otherwise if no `./obewds.tw.config.json` file is found, the update script will install a new one (just like the `install:config` command does).
+
+Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
+
+```bash
+npm explore @obewds/obewds-tw-config -- npm run update:config
+```
+
+You should now have an updated and merged `./obewds.tw.config.json` file, now with any new defaults and any customizations you've made prior, all retained in your root directory defaults config file!
+
+
+
+
+
+
 ## Uninstall
 
 ```bash
