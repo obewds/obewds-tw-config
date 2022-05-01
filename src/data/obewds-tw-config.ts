@@ -19,6 +19,10 @@ interface ObewdsDefaultPalettesInterface {
 }
 
 interface ObewdsTwConfigInterface {
+    anchor: {
+        //palettes: ObewdsDefaultPalettesInterface,
+        [key: string]: string | object
+    },
     bg: {
         palettes: ObewdsDefaultPalettesInterface,
         [key: string]: string | object
@@ -34,6 +38,7 @@ interface ObewdsTwConfigInterface {
 }
 
 let ObewdsTwConfig: ObewdsTwConfigInterface = {
+    "anchor": {},
     "bg": {
         "palettes": {
             "console": {

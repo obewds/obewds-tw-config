@@ -1,4 +1,5 @@
 let ObewdsTwConfig = {
+  "anchor": {},
   "bg": {
     "palettes": {
       "console": {
