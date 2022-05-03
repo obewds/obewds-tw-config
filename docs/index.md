@@ -69,15 +69,21 @@ It's a foundational piece of simple code meant to provide both sides of the desi
 
 
 
-## Config File Installation
-
-First off, go ahead and install the package with:
+## Installing Package
 
 ```bash
 npm install @obewds/obewds-tw-config --save-dev
 ```
 
-Next up, you can run an install script to bring the module output data from this package into your project to edit and customize completely as a handy defaults config JSON file using `npm explore`:
+
+
+
+
+## Installing Config File
+
+Next up, you can run an install script to bring the module output data from this package into your project directly, to allow you to edit/customize defaults specific to your app, and serve as a data source for both your Tailwind CSS config file and your OBE:WDS components.
+
+This can be accomplished easily using `npm explore`:
 
 ```bash
 npm explore @obewds/obewds-tw-config -- npm run install:config
@@ -90,9 +96,13 @@ You should now have a file in your root directory (`./obewds.tw.config.json`) th
 
 
 
-## Including Config in Tailwind
+## Tailwind Config Setup
 
-To actually use your new `./obewds.tw.config.json` file, Tailwind CSS needs to be made aware of the file and it's CSS classes, so they end up included in JIT/build output files. Adding your new defaults config file is a one-liner in Tailwind's `content` inclusion array:
+Tailwind CSS needs to be made aware of your new `./obewds.tw.config.json` file and it's global CSS classes, so they end up included in built/JIT output files. 
+
+### Using OBE:WDS Tailwind Defaults (Prototyping)
+
+Making Tailwind CSS aware of the OBE:WDS default Tailwind CSS classes nested inside project `node_modules` is a one-liner in Tailwind's `content` inclusion array:
 
 ```javascript
 // ./tailwind.config.js
@@ -101,25 +111,59 @@ module.exports = {
     // ...
     content: [
         // ...
-        "./obewds.tw.config.json",
+        // PROVIDES TAILWIND OBE:WDS DEFAULT DESIGN SYSTEM CLASSES
+        "./node_modules/@obewds/obewds-tw-config/dist/*.js",
     ],
     // ...
 }
 ```
 
+::: danger DESIGN SYSTEM INTENT
+This option is mainly used for **rapid prototyping**, **initial component installs** and **project kickoff's**! Final applications should generally be using customized classes to fit the branding of the app via the `./obewds.tw.config.json` file file (below)!
+
+So always be sure the node_modules inclusion above is still needed for production output if you're using a `./obewds.tw.config.json` file, otherwise you will end up with classes you aren't using in your final output Tailwind file!
+:::
+
+### Using an OBE:WDS Tailwind Config File (Production)
+
+Making Tailwind CSS aware of your project's on-going OBE:WDS Tailwind CSS design system file in your root directory needs to be included differently. 
+
+In this case, we'll need to use the `safelist` property and add a little processing to hand-off the data to Tailwind to parse for class matches. It's still a one-liner, but it looks more like this now thanks to Tailwind's inclusing of the `safelist` property:
+
+```javascript
+// ./tailwind.config.js
+
+module.exports = {
+    // ...
+    safelist: [
+        // Include to ensure TW can parse all app config default classes
+        JSON.stringify(require('./obewds.tw.config.json'), null, 0),
+    ],
+    // ...
+}
+```
+
+::: danger DESIGN SYSTEM INTENT
+This option is mainly used for **on-going development** and **production** applications! So this file should be worked to befit a project's branding and visual-related state classes - both depending on any of your own component logic defived from additions you make to your `./obewds.tw.config.json` file, which also impacts any OBE:WDS components you may be using in your app, too!
+:::
 
 
 
-## Importing into Apps
 
-In modern ES Module contexts, the new `./obewds.tw.config.json` defaults file will be automatically converted into a usable JavaScript object when imported. So to use the new file programatically, we simply need:
+
+
+## App Config Setup
+
+In modern ES Module contexts, the new `./obewds.tw.config.json` defaults file will be automatically converted into a usable JavaScript object when imported. 
+
+That means if we want to use our new `./obewds.tw.config.json` file programatically, we can import it into an ESM context like this:
 
 ```javascript
 // assuming we're including into a file that's also in the root directory
 import tw from './obewds.tw.config.json'
 ```
 
-Conversely, the same can be accomplished for Node.js contexts, by switching to the require() syntax:
+Conversely, the same can be accomplished in Node.js (CommonJS) contexts, by switching to the require() syntax:
 
 ```javascript
 // assuming we're including into a file that's also in the root directory
@@ -129,10 +173,27 @@ let tw = require('./obewds.tw.config.json')
 
 ::: tip IMPORT BEST PRACTICES
 * Call your import whatever you want
-* But 'tw' is the internal/common convention!
-* And 'tw' is used/advised for components like Vue.js's `provide()`/`inject()`, too!
+* But `'tw'` is the internal/common convention!
+* And `'tw'` is used/required for OBE:WDS Vue components that use `provide()`/`inject()` inherently!
 :::
 
+
+
+
+
+
+
+## Importing Defaults Directly
+
+Occasionally and especially for component library and prototyping development, you may need to import the default data this package uses to generate a xxxx file, directly into your component logic.
+
+This is useful for example, when you need a fallback set of complete default classes to pre-fill a component with visuallly brand-like default CSS classes - which is extrmemly helpful for rapid protyping!
+
+Importing this package directly is easy:
+
+```javascript
+import { ObewdsTwConfig } from '@obewds/obewds-tw-config'
+```
 
 
 
@@ -208,7 +269,9 @@ So if you're using Tailwind CSS and OBE:WDS together with Vue.js, you will **alm
 
 ## Programmatic Customization
 
-In some cases, an end application will heavily modify or even fully replace (and extend) this design system config file. This is ultimately trivial, because we're really just dealing with objects of keys/values. However the structure is defined for use with components with built-in design system centric features, so thankfully TypeScript is available to help guide programmatic customization.
+In some cases, an end application will heavily modify or even fully replace (and extend) the default `./obewds.tw.config.json` file. 
+
+This is ultimately trivial, because we're really just dealing with objects of keys/values. However the structure is defined for use with components with built-in design system centric features, so thankfully TypeScript is available to help guide programmatic customization.
 
 ::: info TYPESCRIPT IS THE RIGHT SCRIPT
 It's worth noting that this package has first class support for TypeScript being that it's written in... TypeScript, so your IDE can be extremely helpful when customizing your OBE:WDS + Tailwind CSS design system config data!
@@ -219,7 +282,7 @@ Let's look at some simple examples just to illustrate the flexibility and intent
 
 
 
-### Changing Default Colors
+### Changing Default Colors Example
 
 For many apps, the standard palette color keys/names of `default`, `primary`, `secondary`, `error`, and `success` are good starting points. Editing these defaults are as simple as assigning a new value to an object property!
 
@@ -266,7 +329,7 @@ Which means in any app component, we can now access our new default palette prim
 
 
 
-### Adding A Default Palette Color
+### Adding A Default Palette Color Example
 
 In most cases, an app will customize most if not all of the base/config starting data from this package. So let's look at how that would work IRL.
 
@@ -310,7 +373,7 @@ So the approach of this solution to that problem is ultimately meant to make thi
 
 
 
-### Adding A New Palette
+### Adding A New Palette Example
 
 Adding a new Palette (of colors, so adding a new palette and colors to be exact), is similar to extending a default palette, but with a little more complexity.
 
@@ -372,13 +435,15 @@ First off, go ahead and uninstall your existing version of this package and rein
 npm uninstall @obewds/obewds-tw-config && npm install @obewds/obewds-tw-config --save-dev
 ```
 
-Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found will merge it with the new defaults from this package. Otherwise if no `./obewds.tw.config.json` file is found, the update script will install a new one (just like the `install:config` command does).
-
-Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
+Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found will merge it with the new defaults from this package. Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
 
 ```bash
 npm explore @obewds/obewds-tw-config -- npm run update:config
 ```
+
+::: danger PLEASE NOTE
+If no `./obewds.tw.config.json` file is found, the update script will install a new one (just like the `install:config` command does).
+:::
 
 You should now have an updated and merged `./obewds.tw.config.json` file, now with any new defaults and any customizations you've made prior, all retained in your root directory defaults config file!
 

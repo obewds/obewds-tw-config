@@ -43,7 +43,8 @@
     "update:config": "node scripts/update.js"
   },
   "peerDependencies": {
-    "vue": "^3.2.33"
+    "vue": "^3.2.33",
+    "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.2",
