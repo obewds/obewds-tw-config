@@ -144,7 +144,9 @@ module.exports = {
 ```
 
 ::: danger DESIGN SYSTEM INTENT
-This option is mainly used for **on-going development** and **production** applications! So this file should be worked to befit a project's branding and visual-related state classes - both depending on any of your own component logic defived from additions you make to your `./obewds.tw.config.json` file, which also impacts any OBE:WDS components you may be using in your app, too!
+This option is mainly used for **on-going development** and **production** applications!
+
+So basically, this file should be extensively customized to befit a project's branding and visual-related state classes - both depending on any of your own component logic defived from additions you make to your `./obewds.tw.config.json` file, and any out-of-the-box defaults you modify in use with any OBE:WDS components.
 :::
 
 
