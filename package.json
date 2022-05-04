@@ -1,6 +1,6 @@
 {
   "name": "@obewds/obewds-tw-config",
-  "description": "The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations",
+  "description": "The @obewds/obewds-tw-config modular design system component for Vue.js",
   "version": "0.4.1",
   "author": "@oberocks",
   "homepage": "https://github.com/obewds/obewds-tw-config#readme",
