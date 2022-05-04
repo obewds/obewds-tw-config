@@ -1,6 +1,6 @@
 # obewds-tw-config
 
-The official OBE:WDS Vite/Vue TypeScript component package development kit with Tailwind CSS, VitePress and Vitest integrations
+The @obewds/obewds-tw-config modular design system component for Vue.js
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/obewds/obewds-tw-config?label=Github&logo=github&style=for-the-badge) &nbsp; ![npm](https://img.shields.io/npm/v/@obewds/obewds-tw-config?color=%23cc3534&logo=npm&style=for-the-badge)
 
