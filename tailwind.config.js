@@ -8,13 +8,18 @@ module.exports = {
     content: [
         "./index.html",
         "./src/**/*.{vue,js,ts,jsx,tsx}",
-        "./node_modules/@obewds/**/dist/*.js",
-        // ObewdsTwConfig,
+        // PROVIDES TAILWIND OBE:WDS DEFAULT DESIGN SYSTEM CLASSES
+        "./node_modules/@obewds/obewds-tw-config/dist/*.js",
     ],
 
-    theme: {
-        extend: {},
-    },
+    safelist: [
+        // Include to ensure TW can parse all app config default classes
+        JSON.stringify(require('./obewds.tw.config.json'), null, 0),
+    ],
+
+    // theme: {
+    //     extend: {},
+    // },
 
     plugins: [
         require('@tailwindcss/forms'),
