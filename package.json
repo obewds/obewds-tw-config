@@ -3,7 +3,7 @@
   "description": "The @obewds/obewds-tw-config modular design system component for Vue.js",
   "version": "0.4.1",
   "author": "@oberocks",
-  "homepage": "https://github.com/obewds/obewds-tw-config#readme",
+  "homepage": "https://obewds.github.io/obewds-tw-config/",
   "license": "MIT",
   "main": "./dist/obewds-tw-config.umd.js",
   "module": "./dist/obewds-tw-config.es.js",
@@ -38,9 +38,17 @@
     "pkg:publish": "npm publish --access public",
     "publish:prep": "npx rimraf dist && npm run pkg:tsbundle",
     "publish:package": "npm run publish:prep && npm run pkg:org && npm run pkg:login && npm run pkg:publish",
-    "init:as": "node scripts/init.js",
     "install:config": "node scripts/install.js",
     "update:config": "node scripts/update.js"
+  },
+  "dependencies": {
+    "@obewds/tw-bg-palette-console": "^0.1.12",
+    "@obewds/tw-bg-palette-default": "^0.1.10",
+    "@obewds/tw-bg-palette-monochromatic": "^0.1.2",
+    "@obewds/tw-bg-palette-pastel": "^0.1.9",
+    "@obewds/tw-border-palette-default": "^0.1.1",
+    "@obewds/tw-text-palette-default": "^0.1.0",
+    "lodash.merge": "^4.6.2"
   },
   "peerDependencies": {
     "vue": "^3.2.33",
@@ -87,14 +95,5 @@
     "vue3",
     "Vue.js",
     "Tailwind CSS"
-  ],
-  "dependencies": {
-    "@obewds/tw-bg-palette-console": "^0.1.12",
-    "@obewds/tw-bg-palette-default": "^0.1.10",
-    "@obewds/tw-bg-palette-monochromatic": "^0.1.2",
-    "@obewds/tw-bg-palette-pastel": "^0.1.9",
-    "@obewds/tw-border-palette-default": "^0.1.1",
-    "@obewds/tw-text-palette-default": "^0.1.0",
-    "lodash.merge": "^4.6.2"
-  }
+  ]
 }
