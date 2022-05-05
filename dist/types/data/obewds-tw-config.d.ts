@@ -1,19 +1,16 @@
+interface ObewdsBaseColors {
+    "default": string;
+    error: string;
+    primary: string;
+    secondary: string;
+    success: string;
+    [key: string]: string;
+}
 interface ObewdsDefaultPalettesInterface {
     [key: string]: {
         colors: {
             [key: string]: string;
-        };
-        [key: string]: string | object;
-    };
-    default: {
-        colors: {
-            default: string;
-            error: string;
-            primary: string;
-            secondary: string;
-            success: string;
-            [key: string]: string;
-        };
+        } | ObewdsBaseColors;
         [key: string]: string | object;
     };
 }

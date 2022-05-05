@@ -12,7 +12,7 @@ test('ObewdsTwConfig component imports successfully', async () => {
 
 
 
-test('ObewdsTwConfig can be modified with a new bg palette color primary value', async () => {
+test('ObewdsTwConfig can be modified with a new bg default palette color primary value', async () => {
 
     let config = ObewdsTwConfig
     let testClass = 'test-class another-class'
@@ -27,7 +27,7 @@ test('ObewdsTwConfig can be modified with a new bg palette color primary value',
 
 
 
-test('ObewdsTwConfig can be extended with a new bg palette color', async () => {
+test('ObewdsTwConfig can be extended with a new default bg palette color', async () => {
 
     let config = ObewdsTwConfig
     let testKey = 'testKey'
