@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The @obewds/obewds-tw-config modular design system component for Vue.js",
-  "version": "0.4.3",
+  "version": "0.4.5",
   "author": "@oberocks",
   "homepage": "https://obewds.github.io/obewds-tw-config/",
   "license": "MIT",
