@@ -13,7 +13,9 @@
 
     let testConfig = ObewdsTwConfig
 
-    testConfig.bg.palettes.console.colors.new = "test-string"
+    if (testConfig?.bg?.palettes?.console.colors) {
+        testConfig.bg.palettes.console.colors.new = "test-string"
+    }
     
     let newBorderTestPalette = {
         colors: {
@@ -22,16 +24,22 @@
         }
     }
 
-    testConfig.border.palettes.test = newBorderTestPalette
-
-    testConfig.bg.palettes.default.colors.success = 'typescript-can be-cool'
-
-    testConfig.text.palettes.default.colors = {
-        "default": 'text-black dark:text-white',
-        primary: 'text-amber-500 dark:text-amber-200',
-        secondary: 'text-indigo-500 dark:text-indigo-200',
-        error: 'text-rose-500 dark:text-rose-200',
-        success: 'text-emerald-500 dark:text-emerald-200'
+    if (testConfig?.border?.palettes) {
+        testConfig.border.palettes.test = newBorderTestPalette
+    }
+    
+    if (testConfig?.bg?.palettes) {
+        testConfig.bg.palettes.default.colors.success = 'typescript-can be-cool'
+    }
+    
+    if (testConfig?.text?.palettes) {
+        testConfig.text.palettes.default.colors = {
+            "default": 'text-black dark:text-white',
+            primary: 'text-amber-500 dark:text-amber-200',
+            secondary: 'text-indigo-500 dark:text-indigo-200',
+            error: 'text-rose-500 dark:text-rose-200',
+            success: 'text-emerald-500 dark:text-emerald-200'
+        }
     }
 
 </script>
@@ -46,7 +54,7 @@
 
         <strong class="block ">Adding new color to existing default component:</strong>
 
-        <pre><code>{{ testConfig.bg.palettes.console.colors }}</code></pre>
+        <pre><code>{{ testConfig?.bg?.palettes?.console?.colors }}</code></pre>
 
 
         <br><br>
