@@ -11,25 +11,24 @@ interface ObewdsDefaultPalettesInterface {
         colors: {
             [key: string]: string;
         } | ObewdsBaseColors;
-        [key: string]: string | object | undefined;
+        [key: string]: string | object;
     };
 }
 interface ObewdsTwConfigInterface {
     anchor?: {
-        palettes?: ObewdsDefaultPalettesInterface;
-        [key: string]: string | object | undefined;
+        [key: string]: string | object;
     };
     bg?: {
-        palettes?: ObewdsDefaultPalettesInterface;
-        [key: string]: string | object | undefined;
+        palettes: ObewdsDefaultPalettesInterface;
+        [key: string]: string | object;
     };
     border?: {
-        palettes?: ObewdsDefaultPalettesInterface;
-        [key: string]: string | object | undefined;
+        palettes: ObewdsDefaultPalettesInterface;
+        [key: string]: string | object;
     };
     text?: {
-        palettes?: ObewdsDefaultPalettesInterface;
-        [key: string]: string | object | undefined;
+        palettes: ObewdsDefaultPalettesInterface;
+        [key: string]: string | object;
     };
     [key: string]: string | object | undefined;
 }
