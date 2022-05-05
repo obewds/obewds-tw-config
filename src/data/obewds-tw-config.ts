@@ -5,24 +5,20 @@ import { twBgPalettePastel } from '@obewds/tw-bg-palette-pastel'
 import { twBorderPaletteDefault } from '@obewds/tw-border-palette-default'
 import { twTextPaletteDefault } from '@obewds/tw-text-palette-default'
 
+interface ObewdsBaseColors {
+    "default": string,
+    error: string,
+    primary: string,
+    secondary: string,
+    success: string,
+    [key: string]: string
+}
+
 interface ObewdsDefaultPalettesInterface {
     [key: string]: {
-        colors: {
-            [key: string]: string
-        },
-        [key: string]: string | object
+        colors: { [key: string]: string } | ObewdsBaseColors,
+        [key: string]: string | object,
     },
-    default: {
-        colors: {
-            default: string,
-            error: string,
-            primary: string,
-            secondary: string,
-            success: string,
-            [key: string]: string
-        },
-        [key: string]: string | object
-    }
 }
 
 interface ObewdsTwConfigInterface {

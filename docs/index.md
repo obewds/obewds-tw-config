@@ -108,7 +108,10 @@ Making Tailwind CSS aware of the OBE:WDS default Tailwind CSS classes nested ins
 // ./tailwind.config.js
 
 module.exports = {
-    // ...
+    
+    // ENSURE darkMode IS SET TO 'class' MODE (TO SEE/USE DEFAULT DARK/LIGHT MODE CLASSES)
+    darkMode: 'class',
+
     content: [
         // ...
         // PROVIDES TAILWIND OBE:WDS DEFAULT DESIGN SYSTEM CLASSES
