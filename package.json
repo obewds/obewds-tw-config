@@ -46,7 +46,7 @@
     "@obewds/tw-bg-palette-default": "^1.0.0",
     "@obewds/tw-bg-palette-monochromatic": "^1.0.1",
     "@obewds/tw-bg-palette-pastel": "^1.0.1",
-    "@obewds/tw-border-palette-default": "^1.0.0",
+    "@obewds/tw-border-palette-default": "^1.0.1",
     "@obewds/tw-text-palette-default": "^1.0.0",
     "lodash.merge": "^4.6.2"
   },
