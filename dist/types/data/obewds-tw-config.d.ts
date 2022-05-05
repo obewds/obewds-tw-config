@@ -1,10 +1,10 @@
 interface ObewdsBaseColors {
-    "default"?: string;
-    error?: string;
-    primary?: string;
-    secondary?: string;
-    success?: string;
-    [key: string]: string | undefined;
+    "default": string;
+    error: string;
+    primary: string;
+    secondary: string;
+    success: string;
+    [key: string]: string;
 }
 interface ObewdsDefaultPalettesInterface {
     [key: string]: {
@@ -15,22 +15,22 @@ interface ObewdsDefaultPalettesInterface {
     };
 }
 interface ObewdsTwConfigInterface {
-    anchor?: {
+    anchor: {
         [key: string]: string | object;
     };
-    bg?: {
+    bg: {
         palettes: ObewdsDefaultPalettesInterface;
         [key: string]: string | object;
     };
-    border?: {
+    border: {
         palettes: ObewdsDefaultPalettesInterface;
         [key: string]: string | object;
     };
-    text?: {
+    text: {
         palettes: ObewdsDefaultPalettesInterface;
         [key: string]: string | object;
     };
-    [key: string]: string | object | undefined;
+    [key: string]: string | object;
 }
 declare let ObewdsTwConfig: ObewdsTwConfigInterface;
 export default ObewdsTwConfig;
