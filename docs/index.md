@@ -131,7 +131,7 @@ So always be sure the node_modules inclusion above is still needed for productio
 
 Making Tailwind CSS aware of your project's on-going OBE:WDS Tailwind CSS design system file in your root directory needs to be included differently. 
 
-In this case, we'll need to use the `safelist` property and add a little processing to hand-off the data to Tailwind to parse for class matches. It's still a one-liner, but it looks more like this now thanks to Tailwind's inclusing of the `safelist` property:
+In this case, we'll need to use the `safelist` property and add a little processing to hand-off the data to Tailwind to parse for class matches. It's still a one-liner, but it looks more like this now thanks to Tailwind's inclusion of the `safelist` property:
 
 ```javascript
 // ./tailwind.config.js
@@ -149,7 +149,7 @@ module.exports = {
 ::: danger DESIGN SYSTEM INTENT
 This option is mainly used for **on-going development** and **production** applications!
 
-So basically, this file should be extensively customized to befit a project's branding and visual-related state classes - both depending on any of your own component logic defived from additions you make to your `./obewds.tw.config.json` file, and any out-of-the-box defaults you modify in use with any OBE:WDS components.
+So basically, this file should be extensively customized to befit a project's branding and visual-related state classes - both depending on any of your own component logic derived from additions you make to your `./obewds.tw.config.json` file, and any out-of-the-box defaults you modify in use with any OBE:WDS components.
 :::
 
 
@@ -190,7 +190,7 @@ let tw = require('./obewds.tw.config.json')
 
 ## Importing Defaults Directly
 
-Occasionally and especially for component library and prototyping development, you may need to import the default data this package uses to generate a xxxx file, directly into your component logic.
+Occasionally and especially for component library and prototyping development, you may need to import the default data this package uses to generate a `./obewds.tw.config.json` file, directly into your component logic.
 
 This is useful for example, when you need a fallback set of complete default classes to pre-fill a component with visuallly brand-like default CSS classes - which is extrmemly helpful for rapid protyping!
 
@@ -440,7 +440,9 @@ First off, go ahead and uninstall your existing version of this package and rein
 npm uninstall @obewds/obewds-tw-config && npm install @obewds/obewds-tw-config --save-dev
 ```
 
-Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found will merge it with the new defaults from this package. Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
+Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found, **will merge** that existing app config file with any new or missing defaults from this package using [lodash.merge()](https://lodash.com/docs/#merge) under the hood.
+
+Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
 
 ```bash
 npm explore @obewds/obewds-tw-config -- npm run update:config
