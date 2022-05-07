@@ -1,3 +1,4 @@
+import ObewdsTwConfigGroups from './obewds-tw-config-groups'
 import { twBgPaletteConsole } from '@obewds/tw-bg-palette-console'
 import { twBgPaletteDefault } from '@obewds/tw-bg-palette-default'
 import { twBgPaletteMonochromatic } from '@obewds/tw-bg-palette-monochromatic'
@@ -14,36 +15,61 @@ interface ObewdsBaseColors {
     [key: string]: string
 }
 
+interface ObewdsBaseSizes {
+    "4xs": string,
+    "3xs": string,
+    "2xs": string,
+    "xs": string,
+    "sm": string,
+    "md": string,
+    "lg": string,
+    "xl": string,
+    "2xl": string,
+    "3xl": string,
+    "4xl": string,
+    [key: string]: string
+}
+
 interface ObewdsDefaultPalettesInterface {
     [key: string]: {
-        colors: { [key: string]: string } | ObewdsBaseColors,
-        [key: string]: string | object,
+        colors: ObewdsBaseColors | {
+            [key: string]: string
+        },
+        [key: string]: any,
+    },
+}
+
+interface ObewdsDefaultSizesInterface {
+    [key: string]: {
+        sizes: ObewdsBaseSizes | {
+            [key: string]: string
+        },
+        [key: string]: any,
+    },
+}
+
+type DesignSystemKeys = typeof ObewdsTwConfigGroups[number]
+
+interface ObewdsDefaultGroupInterface {
+    [key: string | DesignSystemKeys]: {
+        base?: string,
+        palettes?: ObewdsDefaultPalettesInterface,
+        sizes?: ObewdsDefaultSizesInterface,
+        [key: string]: any,
     },
 }
 
 interface ObewdsTwConfigInterface {
-    anchor: {
-        //palettes: ObewdsDefaultPalettesInterface,
-        [key: string]: string | object
-    },
-    bg: {
-        palettes: ObewdsDefaultPalettesInterface,
-        [key: string]: string | object
-    },
-    border: {
-        palettes: ObewdsDefaultPalettesInterface,
-        [key: string]: string | object
-    },
-    text: {
-        palettes: ObewdsDefaultPalettesInterface,
-        [key: string]: string | object
-    },
-    [key: string]: string | object
+    [key: string]: ObewdsDefaultGroupInterface | any
 }
 
 let ObewdsTwConfig: ObewdsTwConfigInterface = {
-    "anchor": {},
+    anchor: {
+        base: '',
+        // palettes: {},
+    },
     "bg": {
+        base: '',
         "palettes": {
             ...twBgPaletteConsole,
             ...twBgPaletteDefault,
@@ -52,11 +78,13 @@ let ObewdsTwConfig: ObewdsTwConfigInterface = {
         }
     },
     "border": {
+        base: '',
         "palettes": {
             ...twBorderPaletteDefault,
         }
     },
     "text": {
+        base: '',
         "palettes": {
             ...twTextPaletteDefault,
         }

@@ -1,4 +1,4 @@
-// ./tests/ObewdsTwConfig.test.js
+// ./tests/obewds-tw-config.test.js
 
 import ObewdsTwConfig from '@/data/obewds-tw-config'
 

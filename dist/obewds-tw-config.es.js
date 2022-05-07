@@ -82,15 +82,22 @@ var twTextPaletteDefault = {
   }
 };
 let ObewdsTwConfig = {
-  "anchor": {},
+  anchor: {
+    base: ""
+  },
   "bg": {
+    base: "",
     "palettes": __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, twBgPaletteConsole), twBgPaletteDefault), twBgPaletteMonochromatic), twBgPalettePastel)
   },
   "border": {
+    base: "",
     "palettes": __spreadValues({}, twBorderPaletteDefault)
   },
   "text": {
+    base: "",
     "palettes": __spreadValues({}, twTextPaletteDefault)
   }
 };
-export { ObewdsTwConfig };
+const tuple = (...args) => args;
+let ObewdsTwConfigGroups = tuple("anchor", "bg", "border", "button", "text");
+export { ObewdsTwConfig, ObewdsTwConfigGroups };

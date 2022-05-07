@@ -64,16 +64,24 @@ It's a foundational piece of simple code meant to provide both sides of the desi
 
 > What's cool is ultimately these goals are achievable by identifying patterns and a judicious obsession for a DRY front end code base, along with a healthy obsession for a design system that works out-of-the-box for rapid prototyping, but has a fully focused production web app mindset!
 
+<br>
 
 
 
 
 
-## Installing Package
+## Package Installation
 
 ```bash
 npm install @obewds/obewds-tw-config --save-dev
 ```
+
+<br>
+
+
+
+
+
 
 
 
@@ -91,6 +99,37 @@ npm explore @obewds/obewds-tw-config -- npm run install:config
 
 You should now have a file in your root directory (`./obewds.tw.config.json`) that you can use, reference, include in Tailwind CSS config arrays, and more!
 
+<br>
+
+
+
+
+
+## Updating Config Versions
+
+You can also use this package to update an existing project `./obewds.tw.config.json` defaults file to bring in any new data defaults for new components available in the overall OBE:WDS component system. The update process is really similar to installing a config file.
+
+First off, go ahead and uninstall your existing version of this package and reinstall the package to the newest version:
+
+```bash
+npm uninstall @obewds/obewds-tw-config && npm install @obewds/obewds-tw-config --save-dev
+```
+
+Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found, **will merge** that existing app config file with any new or missing defaults from this package using [lodash.merge()](https://lodash.com/docs/#merge) under the hood.
+
+Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
+
+```bash
+npm explore @obewds/obewds-tw-config -- npm run update:config
+```
+
+::: danger PLEASE NOTE
+If no `./obewds.tw.config.json` file is found, the update script will install a new one (just like the `install:config` command does).
+:::
+
+You should now have an updated and merged `./obewds.tw.config.json` file, now with any new defaults and any customizations you've made prior, all retained in your root directory defaults config file!
+
+<br>
 
 
 
@@ -152,6 +191,8 @@ This option is mainly used for **on-going development** and **production** appli
 So basically, this file should be extensively customized to befit a project's branding and visual-related state classes - both depending on any of your own component logic derived from additions you make to your `./obewds.tw.config.json` file, and any out-of-the-box defaults you modify in use with any OBE:WDS components.
 :::
 
+<br>
+
 
 
 
@@ -182,23 +223,7 @@ let tw = require('./obewds.tw.config.json')
 * And `'tw'` is used/required for OBE:WDS Vue components that use `provide()`/`inject()` inherently!
 :::
 
-
-
-
-
-
-
-## Importing Defaults Directly
-
-Occasionally and especially for component library and prototyping development, you may need to import the default data this package uses to generate a `./obewds.tw.config.json` file, directly into your component logic.
-
-This is useful for example, when you need a fallback set of complete default classes to pre-fill a component with visuallly brand-like default CSS classes - which is extrmemly helpful for rapid protyping!
-
-Importing this package directly is easy:
-
-```javascript
-import { ObewdsTwConfig } from '@obewds/obewds-tw-config'
-```
+<br>
 
 
 
@@ -269,6 +294,8 @@ Currently all OBE:WDS + Tailwind CSS focused Vue.js components and design system
 So if you're using Tailwind CSS and OBE:WDS together with Vue.js, you will **almost always** want to use the `'tw'` key on **both** the Vue `provide()` and `inject()` sides of things to override default classes used by OBE:WDS components for rapid prototyping, and instaed use your app and brand specific classes that you define uniquely to your app!
 :::
 
+<br>
+
 
 
 
@@ -283,9 +310,6 @@ It's worth noting that this package has first class support for TypeScript being
 :::
 
 Let's look at some simple examples just to illustrate the flexibility and intent of use.
-
-
-
 
 ### Changing Default Colors Example
 
@@ -427,32 +451,102 @@ And if our newly extended data was used in an app component, we could access the
 </script>
 ```
 
+<br>
 
 
 
-## Updating Config Versions
 
-You can also use this package to update an existing project `./obewds.tw.config.json` defaults file to bring in any new additions for new components in a OBE:WDS component system. It's really similar to installing a config file.
 
-First off, go ahead and uninstall your existing version of this package and reinstall the package to the newest version:
 
-```bash
-npm uninstall @obewds/obewds-tw-config && npm install @obewds/obewds-tw-config --save-dev
+
+
+
+
+
+## Package Modules
+
+### The ObewdsTwConfig Object
+
+Occasionally and especially for component library and prototyping development, you may need to import the default data this package uses to generate a `./obewds.tw.config.json` file, directly into your component logic.
+
+This is useful for example, when you need a fallback set of complete default classes to pre-fill a component with visuallly brand-like default CSS classes - which is extrmemly helpful for rapid protyping!
+
+Importing this package directly is easy:
+
+```javascript
+import { ObewdsTwConfig } from '@obewds/obewds-tw-config'
+
+type ObewdsTwConfigType = typeof ObewdsTwConfig
 ```
 
-Next up, you can run an update script that will check for an existing `./obewds.tw.config.json` file, and if found, **will merge** that existing app config file with any new or missing defaults from this package using [lodash.merge()](https://lodash.com/docs/#merge) under the hood.
-
-Use this command to update and merge new config defaults into your existing `./obewds.tw.config.json` file:
-
-```bash
-npm explore @obewds/obewds-tw-config -- npm run update:config
-```
-
-::: danger PLEASE NOTE
-If no `./obewds.tw.config.json` file is found, the update script will install a new one (just like the `install:config` command does).
+::: info TYPESCRIPT IS THE RIGHT SCRIPT
+Generally speaking, the `ObewdsTwConfig` object is often used in TypeScript contexts, to coax the TypeScript engine into understanding whatever it is we may be doing inside our components (to handle our component functionalities, atomic class data, etc.).
 :::
 
-You should now have an updated and merged `./obewds.tw.config.json` file, now with any new defaults and any customizations you've made prior, all retained in your root directory defaults config file!
+Here's an example of using the `ObewdsTwConfig` object to create a utility function to extract the top-level object keys from the default data in the  `ObewdsTwConfig` object:
+
+```javascript
+import { ObewdsTwConfig } from '@obewds/obewds-tw-config'
+
+type ObewdsTwConfigType = typeof ObewdsTwConfig
+
+const getArrayOfObjectKeys =  function(tw: ObewdsTwConfigType): string[] {
+
+    let objectKeys: string[] = []
+    
+    if (tw) {
+
+        objectKeys = Object.keys( tw ).map( (key) => key )
+
+    }
+
+    return objectKeys
+
+}
+
+console.log(
+    getArrayOfObjectKeys(ObewdsTwConfig) // returns array of keys from ObewdsTwConfig
+)
+```
+
+<br>
+
+
+
+
+
+### The ObewdsTwConfigGroups Array
+
+Across various OBE:WDS components, the `ObewdsTwConfigGroups` array is a surprisingly crucial piece of the puzzle. This won't be needed unless a developer is authoring a new OBE:WDS component to fit within this system, but it's worth making this aspect transparent for sake of understanding how things work under the hood with the `ObewdsTwConfig` object!
+
+Here's an example of using the `ObewdsTwConfig` object in combination with the `ObewdsTwConfigGroups` array to create a utility function to extract a specific top-level object key's data from the default data in the  `ObewdsTwConfig` object:
+
+```javascript
+import { ObewdsTwConfig, ObewdsTwConfigGroups } from '@obewds/obewds-tw-config'
+
+type ObewdsTwConfigType = typeof ObewdsTwConfig
+type DesignSystemKeys = typeof ObewdsTwConfigGroups[number] // number is required to access the tuple string type values
+
+const getBgPaletteNames =  function(tw: ObewdsTwConfigType, key: DesignSystemKeys): string[] {
+
+    let output: string[] = []
+    
+    if (tw && tw[key] && tw[key].palettes) {
+
+        output = Object.keys(tw[key].palettes).map( (key) => key )
+
+    }
+
+    return output
+
+}
+
+console.log(
+    getBgPaletteNames(ObewdsTwConfig, 'bg') // returns array of keys from ObewdsTwConfig
+)
+```
+
+<br>
 
 
 
