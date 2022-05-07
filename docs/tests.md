@@ -23,4 +23,10 @@ head:
 
 ## Vitest Tests
 
-<<< @/../tests/ObewdsTwConfig.test.js
+## obewds-tw-config.test.js
+
+<<< @/../tests/obewds-tw-config.test.js
+
+## obewds-tw-config-groups.test.js
+
+<<< @/../tests/obewds-tw-config-groups.test.js
