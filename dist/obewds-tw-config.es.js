@@ -85,17 +85,17 @@ let ObewdsTwConfig = {
   anchor: {
     base: ""
   },
-  "bg": {
+  bg: {
     base: "",
-    "palettes": __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, twBgPaletteConsole), twBgPaletteDefault), twBgPaletteMonochromatic), twBgPalettePastel)
+    palettes: __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, twBgPaletteConsole), twBgPaletteDefault), twBgPaletteMonochromatic), twBgPalettePastel)
   },
-  "border": {
+  border: {
     base: "",
-    "palettes": __spreadValues({}, twBorderPaletteDefault)
+    palettes: __spreadValues({}, twBorderPaletteDefault)
   },
-  "text": {
+  text: {
     base: "",
-    "palettes": __spreadValues({}, twTextPaletteDefault)
+    palettes: __spreadValues({}, twTextPaletteDefault)
   }
 };
 const tuple = (...args) => args;
