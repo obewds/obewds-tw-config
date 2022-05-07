@@ -68,24 +68,24 @@ let ObewdsTwConfig: ObewdsTwConfigInterface = {
         base: '',
         // palettes: {},
     },
-    "bg": {
+    bg: {
         base: '',
-        "palettes": {
+        palettes: {
             ...twBgPaletteConsole,
             ...twBgPaletteDefault,
             ...twBgPaletteMonochromatic,
             ...twBgPalettePastel
         }
     },
-    "border": {
+    border: {
         base: '',
-        "palettes": {
+        palettes: {
             ...twBorderPaletteDefault,
         }
     },
-    "text": {
+    text: {
         base: '',
-        "palettes": {
+        palettes: {
             ...twTextPaletteDefault,
         }
     }
