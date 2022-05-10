@@ -13,6 +13,8 @@ The @obewds/obewds-tw-config modular design system component for Vue.js
 
 Check out the [official docs](https://obewds.github.io/obewds-tw-config/) for this component for more details!
 
+Or check out the [CHANGELOG](https://github.com/obewds/obewds-tw-config/blob/main/CHANGELOG.md) for the code base!
+
 <br>
 
 
