@@ -246,13 +246,25 @@ const app = createApp(App) // creating the app instance
 app.mount('#app') // mounting the app to the DOM
 ```
 
-With that code in mind, we can add in our `ObewdsTwConfig` defaults into the mix by first importing them:
+With that code in mind, we're going to want to import two bits of code:
+
+1. Our app `./obewds.tw.config.json` data
+1. The `mergeAppConfigWithDefaults()` helper function to sync/merge any component classes needed for components but possibly not in the `./obewds.tw.config.json` file
+
+We can import both like this:
 
 ```javascript
-import tw from '../obewds.tw.config.json'
+import { mergeAppConfigWithDefaults } from '@obewds/vue-component-helpers'
+import appTwConfig from '../obewds.tw.config.json'
 ```
 
-Next up and in the contexts of a Vue.js app, we could elect to make the base config data from this package available globally for use in any app component, by providing a line of code to `provide()` our data to components:
+With our newly imported code, we can combine them in a simple line of code to get our app ready for rapid development with:
+
+```javascript
+const tw = mergeAppConfigWithDefaults(appTwConfig)
+```
+
+Next up and in the contexts of a Vue.js app, we can make our merged config classes data available globally for components, by leveraging Vue.js's awesome `provide()` pattern like this:
 
 ```javascript
 app.provide('tw', tw)
@@ -265,9 +277,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/index.css'
 
-import tw from '../obewds.tw.config.json' // WooHoo!
+import { mergeAppConfigWithDefaults } from '@obewds/vue-component-helpers' // WooHoo!
+import appTwConfig from '../obewds.tw.config.json' // WooHoo!
 
 const app = createApp(App)
+
+const tw = mergeAppConfigWithDefaults(appTwConfig) // WooHoo!
 
 app.provide('tw', tw) // WooHoo!
 
