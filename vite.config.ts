@@ -32,11 +32,27 @@ export default defineConfig({
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled into your library
-      external: ['vue'],
+      external: [
+        'vue',
+        '@obewds/tw-bg-palette-console',
+        '@obewds/tw-bg-palette-default',
+        '@obewds/tw-bg-palette-monochromatic',
+        '@obewds/tw-bg-palette-pastel',
+        '@obewds/tw-border-palette-default',
+        '@obewds/tw-text-palette-default',
+        'lodash.merge',
+      ],
       output: {
         // Provide global variables to use in the UMD build for externalized deps
         globals: {
           vue: 'Vue',
+          '@obewds/tw-bg-palette-console': 'TwBgPaletteConsole',
+          '@obewds/tw-bg-palette-default': 'TwBgPaletteDefault',
+          '@obewds/tw-bg-palette-monochromatic': 'TwBgPaletteMonochromatic',
+          '@obewds/tw-bg-palette-pastel': 'TwBgPalettePastel',
+          '@obewds/tw-border-palette-default': 'TwBorderPaletteDefault',
+          '@obewds/tw-text-palette-default': 'TwTextPaletteDefault',
+          'lodash.merge': 'merge',
         },
         //sourcemap: true,
       },
