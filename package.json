@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The @obewds/obewds-tw-config modular design system component for Vue.js",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": "@oberocks",
   "homepage": "https://obewds.github.io/obewds-tw-config/",
   "license": "MIT",
@@ -36,18 +36,20 @@
     "pkg:org": "npm config set scope obewds",
     "pkg:login": "npm adduser",
     "pkg:publish": "npm publish --access public",
+    "changelog": "auto-changelog --package --unreleased --backfill-limit 20",
+    "git:tag" : "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags",
     "publish:prep": "npx rimraf dist && npm run pkg:tsbundle",
-    "publish:package": "npm run publish:prep && npm run pkg:org && npm run pkg:login && npm run pkg:publish",
+    "publish:package": "npm run publish:prep && npm run pkg:org && npm run pkg:login && npm run pkg:publish && npm run git:tag && npm run changelog",
     "install:config": "node scripts/install.js",
     "update:config": "node scripts/update.js"
   },
   "peerDependencies": {
-    "@obewds/tw-bg-palette-console": "^1.0.1",
-    "@obewds/tw-bg-palette-default": "^1.0.0",
-    "@obewds/tw-bg-palette-monochromatic": "^1.0.1",
-    "@obewds/tw-bg-palette-pastel": "^1.0.1",
-    "@obewds/tw-border-palette-default": "^1.0.1",
-    "@obewds/tw-text-palette-default": "^1.0.0",
+    "@obewds/tw-bg-palette-console": "^1.0.4",
+    "@obewds/tw-bg-palette-default": "^1.0.2",
+    "@obewds/tw-bg-palette-monochromatic": "^1.0.2",
+    "@obewds/tw-bg-palette-pastel": "^1.0.2",
+    "@obewds/tw-border-palette-default": "^1.0.2",
+    "@obewds/tw-text-palette-default": "^1.0.1",
     "lodash.merge": "^4.6.2",
     "vue": "^3.2.33"
   },
@@ -61,10 +63,11 @@
     "@types/node": "^17.0.31",
     "@vitejs/plugin-vue": "^2.3.2",
     "@vue/test-utils": "^2.0.0-rc.20",
+    "auto-changelog": "^2.4.0",
     "autoprefixer": "^10.4.7",
     "c8": "^7.11.0",
     "fs-extra": "^10.1.0",
-    "happy-dom": "^3.1.1",
+    "happy-dom": "^3.2.0",
     "lodash": "^4.17.21",
     "postcss": "^8.4.13",
     "rimraf": "^3.0.2",
@@ -74,7 +77,7 @@
     "vitepress": "^0.22.4",
     "vitest": "^0.12.3",
     "vue": "^3.2.33",
-    "vue-tsc": "^0.34.11"
+    "vue-tsc": "^0.34.12"
   },
   "repository": {
     "type": "git",
