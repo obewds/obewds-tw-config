@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The @obewds/obewds-tw-config modular design system component for Vue.js",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "author": "@oberocks",
   "homepage": "https://obewds.github.io/obewds-tw-config/",
   "license": "MIT",
@@ -44,17 +44,14 @@
     "update:config": "node scripts/update.js"
   },
   "dependencies": {
+    "@obewds/tw-bg-palette-console": "^1.0.4",
+    "@obewds/tw-bg-palette-default": "^1.0.2",
+    "@obewds/tw-bg-palette-monochromatic": "^1.0.2",
+    "@obewds/tw-bg-palette-pastel": "^1.0.3",
+    "@obewds/tw-border-palette-default": "^1.0.2",
+    "@obewds/tw-text-palette-default": "^1.0.2",
+    "@obewds/vue-component-helpers": "^0.7.1",
     "lodash.merge": "^4.6.2"
-  },
-  "peerDependencies": {
-    "@obewds/tw-bg-palette-console": "*",
-    "@obewds/tw-bg-palette-default": "*",
-    "@obewds/tw-bg-palette-monochromatic": "*",
-    "@obewds/tw-bg-palette-pastel": "*",
-    "@obewds/tw-border-palette-default": "*",
-    "@obewds/tw-text-palette-default": "*",
-    "@obewds/vue-component-helpers": "*",
-    "vue": "3.x"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.2",
