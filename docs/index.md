@@ -154,7 +154,7 @@ module.exports = {
     content: [
         // ...
         // PROVIDES TAILWIND OBE:WDS DEFAULT DESIGN SYSTEM CLASSES
-        "./node_modules/@obewds/obewds-tw-config/dist/*.js",
+        "./node_modules/@obewds/**/dist/*.js"
     ],
     // ...
 }
@@ -170,16 +170,17 @@ So always be sure the node_modules inclusion above is still needed for productio
 
 Making Tailwind CSS aware of your project's on-going OBE:WDS Tailwind CSS design system file in your root directory needs to be included differently. 
 
-In this case, we'll need to use the `safelist` property and add a little processing to hand-off the data to Tailwind to parse for class matches. It's still a one-liner, but it looks more like this now thanks to Tailwind's inclusion of the `safelist` property:
+Again, we can add the app `./obewds.tw.config.json` file to the `./tailwind.config.js` config file's `content` property array as a string of the path to the file:
 
 ```javascript
 // ./tailwind.config.js
 
 module.exports = {
     // ...
-    safelist: [
-        // Include to ensure TW can parse all app config default classes
-        JSON.stringify(require('./obewds.tw.config.json'), null, 0),
+    content: [
+        // ...
+        // PROVIDES TAILWIND OBE:WDS APP DESIGN SYSTEM CLASSES
+        "./obewds.tw.config.json"
     ],
     // ...
 }
@@ -292,15 +293,15 @@ app.mount('#app')
 And this of course means we can use our provided data in a Vue component, like this:
 
 ```html
+<script setup lang="ts">
+    const tw = inject('tw')
+    const primaryBg = tw.bg.palettes.default.color.primary
+</script>
 <template>
     <div :class="primaryBg">
         <slot/>
     </div>
 </template>
-<script setup lang="ts">
-    const tw = inject('tw')
-    const primaryBg = tw.bg.palettes.default.color.primary
-</script>
 ```
 
 ::: danger ABOUT THE 'tw' KEY
