@@ -9,7 +9,9 @@ module.exports = {
         "./index.html",
         "./src/**/*.{vue,js,ts,jsx,tsx}",
         // PROVIDES TAILWIND OBE:WDS DEFAULT DESIGN SYSTEM CLASSES
-        "./node_modules/@obewds/obewds-tw-config/dist/*.js",
+        "./node_modules/@obewds/**/dist/*.js",
+        // PROVIDES TAILWIND OBE:WDS APP DESIGN SYSTEM CLASSES
+        "./obewds.tw.config.json"
     ],
 
     safelist: [
