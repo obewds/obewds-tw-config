@@ -44,7 +44,7 @@
     "update:config": "node scripts/update.js"
   },
   "dependencies": {
-    "@obewds/tw-bg-palette-console": "^1.0.4",
+    "@obewds/tw-bg-palette-console": "^1.1.0",
     "@obewds/tw-bg-palette-default": "^1.0.2",
     "@obewds/tw-bg-palette-monochromatic": "^1.0.2",
     "@obewds/tw-bg-palette-pastel": "^1.0.3",
