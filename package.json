@@ -1,7 +1,7 @@
 {
   "name": "@obewds/obewds-tw-config",
   "description": "The @obewds/obewds-tw-config modular design system component for Vue.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "@oberocks",
   "homepage": "https://obewds.github.io/obewds-tw-config/",
   "license": "MIT",
@@ -74,7 +74,7 @@
     "typescript": "^4.7.4",
     "vite": "^2.9.14",
     "vitepress": "^1.0.0-alpha.4",
-    "vitest": "^0.17.1",
+    "vitest": "^0.18.0",
     "vue": "^3.2.37",
     "vue-tsc": "^0.38.3"
   },
