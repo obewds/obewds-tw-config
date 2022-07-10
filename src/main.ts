@@ -2,14 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/index.css'
 
-import { mergeAppConfigWithDefaults } from '@obewds/vue-component-helpers'
-import appTwConfig from '../obewds.tw.config.json'
-
 const app = createApp(App)
-
-const tw = mergeAppConfigWithDefaults(appTwConfig)
-
-// app.provide('tw', tw)
 
 app.provide('globals', {
     classes: {
