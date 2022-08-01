@@ -76,7 +76,7 @@
     "vitepress": "^1.0.0-alpha.4",
     "vitest": "^0.18.0",
     "vue": "^3.2.37",
-    "vue-tsc": "^0.38.3"
+    "vue-tsc": "^0.39.4"
   },
   "repository": {
     "type": "git",
