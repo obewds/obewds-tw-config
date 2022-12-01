@@ -63,7 +63,7 @@
     "@vue/test-utils": "^2.1.0",
     "auto-changelog": "^2.4.0",
     "autoprefixer": "^10.4.12",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.0",
     "happy-dom": "^7.1.1",
     "lodash": "^4.17.21",
     "postcss": "^8.4.17",
